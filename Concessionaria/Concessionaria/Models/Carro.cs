@@ -9,6 +9,11 @@ namespace Concessionaria.Models
 {
     public class Carro
     {
+        public Carro()
+        {
+            this.Proprietarios = new HashSet<Proprietario>();
+        }
+
         [Key]
         public int CarroID { get; set; }
 
@@ -18,11 +23,13 @@ namespace Concessionaria.Models
 
         public int Ano { get; set; }
 
-        
+
         public string Combustivel { get; set; }
 
         [ForeignKey("FabricanteID")]
         public Fabricante Fabricante { get; set; }
-        
+
+        public  virtual ICollection<Proprietario> Proprietarios { get; set; }
+
     }
 }

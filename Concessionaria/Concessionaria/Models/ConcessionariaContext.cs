@@ -16,6 +16,8 @@ namespace Concessionaria.Models
         //}
 
         public DbSet<Fabricante> Fabricante { get; set; }
-        public DbSet<Carro> Carro { get; set; }
+        public DbSet<Carro> Carro { get; set; }        
+
+        public System.Data.Entity.DbSet<Concessionaria.Models.Proprietario> Proprietarios { get; set; }
     }
 }

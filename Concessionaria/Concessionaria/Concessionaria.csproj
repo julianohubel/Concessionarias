@@ -154,13 +154,24 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CarroController.cs" />
     <Compile Include="Controllers\FabricantesController.cs" />
+    <Compile Include="Controllers\ProprietariosController.cs" />
     <Compile Include="Controllers\TesteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610222223348_InitialCreate.cs" />
+    <Compile Include="Migrations\201610222223348_InitialCreate.Designer.cs">
+      <DependentUpon>201610222223348_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610232111108_FirstMigration.cs" />
+    <Compile Include="Migrations\201610232111108_FirstMigration.Designer.cs">
+      <DependentUpon>201610232111108_FirstMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Carro.cs" />
     <Compile Include="Models\ConcessionariaContext.cs" />
     <Compile Include="Models\Fabricante.cs" />
+    <Compile Include="Models\Proprietario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +195,11 @@
     <Content Include="Views\Carro\Details.cshtml" />
     <Content Include="Views\Carro\Edit.cshtml" />
     <Content Include="Views\Carro\Index.cshtml" />
+    <Content Include="Views\Proprietarios\Create.cshtml" />
+    <Content Include="Views\Proprietarios\Delete.cshtml" />
+    <Content Include="Views\Proprietarios\Details.cshtml" />
+    <Content Include="Views\Proprietarios\Edit.cshtml" />
+    <Content Include="Views\Proprietarios\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -193,7 +209,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Fabricante\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201610222223348_InitialCreate.resx">
+      <DependentUpon>201610222223348_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610232111108_FirstMigration.resx">
+      <DependentUpon>201610232111108_FirstMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -45,7 +45,13 @@
                 @Html.ValidationMessageFor(model => model.Combustivel, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <div class="form-group">
+            @Html.LabelFor(model => model.Proprietarios, "Proprietarios", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ListBoxFor(x => x.Proprietarios, new MultiSelectList(Model.Proprietarios), new { id = "list2", Multiple = "multiple", Size = 15, style = "width: 100%;" })
+                @Html.ValidationMessageFor(model => model.Proprietarios, "", new { @class = "text-danger" })
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
