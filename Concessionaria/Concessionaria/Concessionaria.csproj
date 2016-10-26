@@ -167,6 +167,11 @@
     <Compile Include="Migrations\201610232111108_FirstMigration.Designer.cs">
       <DependentUpon>201610232111108_FirstMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610260045222_Migration25\10.cs" />
+    <Compile Include="Migrations\201610260049273_dspjdaspkdas.cs" />
+    <Compile Include="Migrations\201610260049273_dspjdaspkdas.Designer.cs">
+      <DependentUpon>201610260049273_dspjdaspkdas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Carro.cs" />
     <Compile Include="Models\ConcessionariaContext.cs" />
@@ -216,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610232111108_FirstMigration.resx">
       <DependentUpon>201610232111108_FirstMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610260049273_dspjdaspkdas.resx">
+      <DependentUpon>201610260049273_dspjdaspkdas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

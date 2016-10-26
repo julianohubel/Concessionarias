@@ -14,14 +14,19 @@ namespace Concessionaria.Models
             this.Proprietarios = new HashSet<Proprietario>();
         }
 
-        [Key]
+        [Key]        
+
+
         public int CarroID { get; set; }
 
         public int FabricanteID { get; set; }
 
+        [Required(ErrorMessage="Obrigatório informar Nome")]
+        [StringLength(30, ErrorMessage="Nome deve conter no maximo 30 caracteres")]
         public string Nome { get; set; }
 
-        public int Ano { get; set; }
+        [Required(ErrorMessage="Ano é obrigatório")]            
+         public int Ano { get; set; }
 
 
         public string Combustivel { get; set; }

@@ -119,6 +119,12 @@ namespace Concessionaria.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult BomDia()
+        {
+            return Content("Bom Dia!");
+        }
+
+
 
         protected override void Dispose(bool disposing)
         {
