@@ -152,7 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\CarroController.cs" />
+    <Compile Include="Controllers\CarroesController.cs" />
     <Compile Include="Controllers\FabricantesController.cs" />
     <Compile Include="Controllers\ProprietariosController.cs" />
     <Compile Include="Controllers\TesteController.cs" />
@@ -171,6 +171,14 @@
     <Compile Include="Migrations\201610260049273_dspjdaspkdas.cs" />
     <Compile Include="Migrations\201610260049273_dspjdaspkdas.Designer.cs">
       <DependentUpon>201610260049273_dspjdaspkdas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611011940435_abcs.cs" />
+    <Compile Include="Migrations\201611011940435_abcs.Designer.cs">
+      <DependentUpon>201611011940435_abcs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611012014008_abcs2.cs" />
+    <Compile Include="Migrations\201611012014008_abcs2.Designer.cs">
+      <DependentUpon>201611012014008_abcs2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Carro.cs" />
@@ -195,16 +203,16 @@
     <Content Include="Views\Fabricantes\Details.cshtml" />
     <Content Include="Views\Fabricantes\Edit.cshtml" />
     <Content Include="Views\Fabricantes\Index.cshtml" />
-    <Content Include="Views\Carro\Create.cshtml" />
-    <Content Include="Views\Carro\Delete.cshtml" />
-    <Content Include="Views\Carro\Details.cshtml" />
-    <Content Include="Views\Carro\Edit.cshtml" />
-    <Content Include="Views\Carro\Index.cshtml" />
     <Content Include="Views\Proprietarios\Create.cshtml" />
     <Content Include="Views\Proprietarios\Delete.cshtml" />
     <Content Include="Views\Proprietarios\Details.cshtml" />
     <Content Include="Views\Proprietarios\Edit.cshtml" />
     <Content Include="Views\Proprietarios\Index.cshtml" />
+    <Content Include="Views\Carroes\Create.cshtml" />
+    <Content Include="Views\Carroes\Delete.cshtml" />
+    <Content Include="Views\Carroes\Details.cshtml" />
+    <Content Include="Views\Carroes\Edit.cshtml" />
+    <Content Include="Views\Carroes\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -224,6 +232,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610260049273_dspjdaspkdas.resx">
       <DependentUpon>201610260049273_dspjdaspkdas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611011940435_abcs.resx">
+      <DependentUpon>201611011940435_abcs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611012014008_abcs2.resx">
+      <DependentUpon>201611012014008_abcs2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

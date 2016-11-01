@@ -6,10 +6,11 @@ using System.ComponentModel.DataAnnotations;
 namespace Concessionaria.Models
 {
     public class Proprietario
-    {
+    {    
+
         public Proprietario()
         {
-            this.Carros = new HashSet<Carro>();
+            this.Carros = new HashSet<Carro>(); 
         }
 
         [Key]
