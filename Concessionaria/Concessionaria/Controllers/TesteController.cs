@@ -12,6 +12,7 @@ namespace Concessionaria.Controllers
         public ActionResult Index()
         {
             return View();
+
         }
     }
 }
