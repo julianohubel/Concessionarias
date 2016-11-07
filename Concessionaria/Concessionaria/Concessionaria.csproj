@@ -180,6 +180,10 @@
     <Compile Include="Migrations\201611012014008_abcs2.Designer.cs">
       <DependentUpon>201611012014008_abcs2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611070302467_migracao01.cs" />
+    <Compile Include="Migrations\201611070302467_migracao01.Designer.cs">
+      <DependentUpon>201611070302467_migracao01.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Carro.cs" />
     <Compile Include="Models\ConcessionariaContext.cs" />
@@ -238,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611012014008_abcs2.resx">
       <DependentUpon>201611012014008_abcs2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611070302467_migracao01.resx">
+      <DependentUpon>201611070302467_migracao01.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

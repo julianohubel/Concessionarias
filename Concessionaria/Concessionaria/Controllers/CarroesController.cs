@@ -40,7 +40,16 @@ namespace Concessionaria.Controllers
         public ActionResult Create()
         {
             ViewBag.FabricanteID = new SelectList(db.Fabricante, "FabricanteID", "Nome");
+            var carro = new Carro();
+            carro.Proprietarios = new List<Proprietario>();
+            var viewModel = new List<Proprietario>();            
+            ViewBag.Proprietarios = db.Proprietarios.ToList();
             return View();
+        }
+
+        private void PopulateProprietarios()
+        {
+            var todosProprietarios = db.Proprietarios;
         }
 
         // POST: Carroes/Create
@@ -48,8 +57,18 @@ namespace Concessionaria.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CarroID,FabricanteID,Nome,Ano,Combustivel")] Carro carro)
+        public ActionResult Create([Bind(Include = "CarroID,FabricanteID,Nome,Ano,Combustivel")] Carro carro, string[] proprietariosSelecionados)
         {
+            if(proprietariosSelecionados != null)
+            {
+                carro.Proprietarios = new List<Proprietario>();
+                foreach(string proprietario in proprietariosSelecionados)
+                {
+                    carro.Proprietarios.Add(db.Proprietarios.Find(int.Parse(proprietario)));
+                }
+            }
+
+
             if (ModelState.IsValid)
             {
                 db.Carro.Add(carro);

@@ -54,3 +54,4 @@ C:\Projetos\Estudos\Concessionarias\Concessionaria\Concessionaria\obj\Debug\Conc
 C:\Projetos\Estudos\Concessionarias\Concessionaria\Concessionaria\obj\Debug\Concessionaria.pdb
 C:\Projetos\Estudos\Concessionarias\Concessionaria\Concessionaria\obj\Debug\Concessionaria.Migrations.abcs.resources
 C:\Projetos\Estudos\Concessionarias\Concessionaria\Concessionaria\obj\Debug\Concessionaria.Migrations.abcs2.resources
+c:\projetos\estudos\concessionarias\Concessionaria\Concessionaria\obj\Debug\Concessionaria.Migrations.migracao01.resources

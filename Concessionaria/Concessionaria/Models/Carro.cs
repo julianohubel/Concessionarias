@@ -15,8 +15,6 @@ namespace Concessionaria.Models
         }
 
         [Key]        
-
-
         public int CarroID { get; set; }
 
         public int FabricanteID { get; set; }
