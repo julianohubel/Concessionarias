@@ -109,7 +109,14 @@ namespace Concessionaria.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Fabricante fabricante = db.Fabricante.Find(id);
+            Fabricante fabricante = db.Fabricante.Include(f=> f.Carros).Where(f=>f.FabricanteID ==  id).SingleOrDefault();
+            if(fabricante.Carros.Count > 0  )
+            {
+                // return JavaScript(aler  alert("Há carros vinculados, exclusão não permitida"));
+                //return Content("<script language='javascript' type='text/javascript'>alert('Há carros vinculados, exclusão não permitida!');</script>");
+                TempData["Msg"] = "Há carros vinculados, exclusão não permitida";
+                return View(fabricante);
+            }
             db.Fabricante.Remove(fabricante);
             db.SaveChanges();
             return RedirectToAction("Index");

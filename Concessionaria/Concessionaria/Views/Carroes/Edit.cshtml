@@ -48,6 +48,25 @@
             </div>
         </div>
 
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Proprietarios, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{ 
+                    List<Concessionaria.ViewsModel.CarrosProprietarios> proprietarios = ViewBag.Proprietarios;
+
+                    foreach(var prop in proprietarios)
+                    {
+                        @:
+                        <input type="checkbox" name="proprietariosSelecionados"
+                         id="proprietariosSelecionados" @(Html.Raw(prop.Atribuido ? "checked=\"checked\"" : "" )) 
+                               value="@prop.ProprietarioID" /> @prop.Nome
+                                  
+                    }
+                }
+            </div>
+        </div>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />

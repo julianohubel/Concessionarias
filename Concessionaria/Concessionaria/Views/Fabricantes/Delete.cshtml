@@ -2,6 +2,11 @@
 
 @{
     ViewBag.Title = "Delete";
+    if (TempData["Msg"] != null)
+    {
+        @:
+        <script> alert("@TempData["Msg"]")</script>
+    }
 }
 
 <h2>Delete</h2>
