@@ -34,6 +34,20 @@ namespace Concessionaria.Controllers
             }
             return View(fabricante);
         }
+        // GET: Fabricantes/Details/5
+        public ActionResult DetailsName(string nome)
+        {
+            if (string.IsNullOrEmpty(nome))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Fabricante fabricante = db.Fabricante.Where(f => f.Nome == nome).SingleOrDefault();         
+            if (fabricante == null)
+            {
+                return HttpNotFound();
+            }
+            return View("Details",fabricante);
+        }
 
         // GET: Fabricantes/Create
         public ActionResult Create()

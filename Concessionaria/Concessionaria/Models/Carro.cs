@@ -7,6 +7,7 @@ using System.Web;
 
 namespace Concessionaria.Models
 {
+   
     public class Carro
     {
         public Carro()
@@ -20,7 +21,7 @@ namespace Concessionaria.Models
         public int FabricanteID { get; set; }
 
         [Required(ErrorMessage="Obrigatório informar Nome")]
-        [StringLength(30, ErrorMessage="Nome deve conter no maximo 30 caracteres")]
+        [StringLength(30, ErrorMessage="Nome deve conter no maximo 30 caracteres")]             
         public string Nome { get; set; }
 
         [Required(ErrorMessage="Ano é obrigatório")]            

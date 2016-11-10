@@ -13,27 +13,67 @@ namespace Concessionaria.Controllers
     public class CarroesController : Controller
     {
         private ConcessionariaContext db = new ConcessionariaContext();
-
-        // GET: Carroes
+        
+        // GET: Carroes 
         public ActionResult Index()
         {
             var carro = db.Carro.Include(c => c.Fabricante).Include(c => c.Proprietarios);
             return View(carro.ToList());
+            
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(string Nome, string Ano)
+        {
+            int ano = 0;
+             int.TryParse(Ano,out ano);
+
+            var carro = db.Carro.Include(c => c.Fabricante).Include(c => c.Proprietarios).
+                Where(c => c.Nome.Contains(!string.IsNullOrEmpty(Nome) ? Nome : c.Nome) &&
+                       c.Ano == (ano > 0 ? ano : c.Ano));
+            return View(carro);
         }
 
+        public PartialViewResult PartialIndex(string Nome, string Ano)
+        {
+            int ano = 0;
+            int.TryParse(Ano, out ano);
+
+            var carro = db.Carro.Include(c => c.Fabricante).Include(c => c.Proprietarios).
+                Where(c => c.Nome.Contains(!string.IsNullOrEmpty(Nome) ? Nome : c.Nome) &&
+                       c.Ano == (ano > 0 ? ano : c.Ano));
+            return PartialView(carro);
+        }
+
+
         // GET: Carroes/Details/5
+
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Carro carro = db.Carro.Find(id);
+            Carro carro = db.Carro.Include(c => c.Proprietarios).Where(c=> c.CarroID == id).SingleOrDefault();
             if (carro == null)
             {
                 return HttpNotFound();
             }
             return View(carro);
+        }
+        
+        public ActionResult DetailsName(string nome)
+        {
+            if (string.IsNullOrEmpty( nome ))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Carro carro = db.Carro.Include(c => c.Proprietarios).Where(c => c.Nome == nome).SingleOrDefault();
+            if (carro == null)
+            {
+                return HttpNotFound();
+            }
+            return View("Details", carro);
         }
 
         // GET: Carroes/Create

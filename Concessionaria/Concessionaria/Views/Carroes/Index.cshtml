@@ -4,55 +4,115 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<script>
+    function atualizarDefinicao() {
+        $.ajax(
+        {
+            type: 'GET',
+            url: '/Home/DefinicaoArquitetura',
+            dataType: 'html',
+            cache: false,
+            async: true,
+            success: function (data) {
+                $('#definicaoArquitetura').html(data);
+            }
+        });
+    }
+
+    function Pesquisar()
+    {
+        $.ajax(
+            {
+                type: 'GET',
+                url: '@Url.Content( "~/Carroes/PartialIndex/")',                
+                data: { Nome: $("#Nome").val(), Ano: $("#Ano").val() },
+                dataType: 'html',
+                cache: false,
+                async: true,               
+                success: function(data)
+                    {
+                        $("#divPartial").html(data);
+                    }
+                });
+    }
+</script>
+
+<h2>Carros</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Novo Carro", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Fabricante.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ano)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Combustivel)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Proprietarios)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model)
+
+@Html.AntiForgeryToken()
+<div class="top">
+    Nome: <input type="text" id="Nome" name="Nome" /><br />
+    Ano : <input type="text" id="Ano" name="Ano" /> <br />
+    <input type="button" onclick="Pesquisar()" value="Pesquisar" />
+</div>
+
+
+@using (Html.BeginForm())
 {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fabricante.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ano)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Combustivel)
-        </td>
-        <td>
-                @Html.Raw(string.Join(", ", item.Proprietarios.Select(p => p.Nome)))             
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CarroID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CarroID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CarroID })
-        </td>
-    </tr>
+    @:<div id="divPartial">
+        Html.RenderPartial("PartialIndex");
+    @:</div>
 }
 
-</table>
+
+@*
+      @Html.AntiForgeryToken()
+    <div class="top">
+        Nome: <input type="text" id="Nome" name="Nome" /><br />
+        Ano : <input type="text" id="Ano" name="Ano" /> <br />
+        <input type="submit" value="Pesquisar" />
+    </div>
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fabricante.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ano)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Combustivel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proprietarios)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fabricante.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ano)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Combustivel)
+                </td>
+                <td>
+                    @Html.Raw(string.Join(", ", item.Proprietarios.Select(p => p.Nome)))
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CarroID }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.CarroID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CarroID })
+                </td>
+            </tr>
+        }
+
+    </table>*@

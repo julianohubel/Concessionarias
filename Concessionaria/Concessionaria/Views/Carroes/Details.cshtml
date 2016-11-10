@@ -42,6 +42,14 @@
             @Html.DisplayFor(model => model.Combustivel)
         </dd>
 
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Proprietarios)
+        </dt>
+
+        <dd>
+            @Html.Raw(string.Join(", ", Model.Proprietarios.Select(p => p.Nome)))
+        </dd>
     </dl>
 </div>
 <p>

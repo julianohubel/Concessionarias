@@ -154,6 +154,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CarroesController.cs" />
     <Compile Include="Controllers\FabricantesController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProprietariosController.cs" />
     <Compile Include="Controllers\TesteController.cs" />
     <Compile Include="Global.asax.cs">
@@ -183,6 +184,14 @@
     <Compile Include="Migrations\201611070302467_migracao01.cs" />
     <Compile Include="Migrations\201611070302467_migracao01.Designer.cs">
       <DependentUpon>201611070302467_migracao01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611100254453_12345.cs" />
+    <Compile Include="Migrations\201611100254453_12345.Designer.cs">
+      <DependentUpon>201611100254453_12345.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611100301178_21jfdjas.cs" />
+    <Compile Include="Migrations\201611100301178_21jfdjas.Designer.cs">
+      <DependentUpon>201611100301178_21jfdjas.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Carro.cs" />
@@ -219,6 +228,8 @@
     <Content Include="Views\Carroes\Details.cshtml" />
     <Content Include="Views\Carroes\Edit.cshtml" />
     <Content Include="Views\Carroes\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Carroes\PartialIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -247,6 +258,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611070302467_migracao01.resx">
       <DependentUpon>201611070302467_migracao01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611100254453_12345.resx">
+      <DependentUpon>201611100254453_12345.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611100301178_21jfdjas.resx">
+      <DependentUpon>201611100301178_21jfdjas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
