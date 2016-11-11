@@ -1,31 +1,24 @@
-﻿@model IEnumerable<Concessionaria.Models.Carro>
+﻿
+
+@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<Concessionaria.Models.Carro>
 
 @{
     ViewBag.Title = "Index";
 }
 
 <script>
-    function atualizarDefinicao() {
-        $.ajax(
-        {
-            type: 'GET',
-            url: '/Home/DefinicaoArquitetura',
-            dataType: 'html',
-            cache: false,
-            async: true,
-            success: function (data) {
-                $('#definicaoArquitetura').html(data);
-            }
-        });
-    }
-
-    function Pesquisar()
+    function Pesquisar(page)
     {
+        if (page == null)
+            page = 1;
+
         $.ajax(
             {
                 type: 'GET',
                 url: '@Url.Content( "~/Carroes/PartialIndex/")',                
-                data: { Nome: $("#Nome").val(), Ano: $("#Ano").val() },
+                data: { Nome: $("#Nome").val(), Ano: $("#Ano").val() , page : page},
                 dataType: 'html',
                 cache: false,
                 async: true,               

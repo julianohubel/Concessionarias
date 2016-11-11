@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Concessionaria.Models;
+using PagedList;
 
 namespace Concessionaria.Controllers
 {
@@ -17,8 +18,8 @@ namespace Concessionaria.Controllers
         // GET: Carroes 
         public ActionResult Index()
         {
-            var carro = db.Carro.Include(c => c.Fabricante).Include(c => c.Proprietarios);
-            return View(carro.ToList());
+            IPagedList<Carro> carro =  db.Carro.Include(c => c.Fabricante).Include(c => c.Proprietarios).OrderBy(c => c.Nome).ToPagedList(1, 10);
+            return View(carro);
             
         }
         [HttpPost]
@@ -34,14 +35,14 @@ namespace Concessionaria.Controllers
             return View(carro);
         }
 
-        public PartialViewResult PartialIndex(string Nome, string Ano)
+        public PartialViewResult PartialIndex(string Nome, string Ano, int? page)
         {
             int ano = 0;
             int.TryParse(Ano, out ano);
-
-            var carro = db.Carro.Include(c => c.Fabricante).Include(c => c.Proprietarios).
+            
+            IPagedList<Carro> carro = db.Carro.Include(c => c.Fabricante).Include(c => c.Proprietarios).
                 Where(c => c.Nome.Contains(!string.IsNullOrEmpty(Nome) ? Nome : c.Nome) &&
-                       c.Ano == (ano > 0 ? ano : c.Ano));
+                       c.Ano == (ano > 0 ? ano : c.Ano)).OrderBy(c => c.Nome).ToPagedList(page ?? 1,10);
             return PartialView(carro);
         }
 

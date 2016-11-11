@@ -57,3 +57,7 @@ C:\Projetos\Estudos\Concessionarias\Concessionaria\Concessionaria\obj\Debug\Conc
 c:\projetos\estudos\concessionarias\Concessionaria\Concessionaria\obj\Debug\Concessionaria.Migrations.migracao01.resources
 c:\projetos\estudos\concessionarias\Concessionaria\Concessionaria\obj\Debug\Concessionaria.Migrations._12345.resources
 c:\projetos\estudos\concessionarias\Concessionaria\Concessionaria\obj\Debug\Concessionaria.Migrations._21jfdjas.resources
+c:\projetos\estudos\concessionarias\Concessionaria\Concessionaria\bin\PagedList.dll
+c:\projetos\estudos\concessionarias\Concessionaria\Concessionaria\bin\PagedList.Mvc.dll
+c:\projetos\estudos\concessionarias\Concessionaria\Concessionaria\bin\PagedList.xml
+c:\projetos\estudos\concessionarias\Concessionaria\Concessionaria\bin\PagedList.Mvc.xml

@@ -31,7 +31,7 @@ namespace Concessionaria.Models
         public string Combustivel { get; set; }
 
         [ForeignKey("FabricanteID")]
-        public Fabricante Fabricante { get; set; }
+        public  Fabricante Fabricante { get; set; }
 
         public  virtual ICollection<Proprietario> Proprietarios { get; set; }
 
