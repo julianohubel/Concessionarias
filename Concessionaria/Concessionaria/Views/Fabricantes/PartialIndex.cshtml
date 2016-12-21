@@ -1,0 +1,33 @@
+﻿@model IPagedList<Fabricante>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().PaisOrigem)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaisOrigem)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.FabricanteID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.FabricanteID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.FabricanteID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@PaginadorAjax.Create(Model, "PreencheFabricantes", null)

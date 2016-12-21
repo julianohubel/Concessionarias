@@ -54,30 +54,5 @@
 
 </table>
 
-@if (Model.HasNextPage || Model.HasPreviousPage)
-{
-    <div style="text-align: center">
-        @*@Html.PagedListPager(Model, (page) => Url.Action("Index", new { page = page }), PagedListRenderOptions.Classic)*@
-        @if (Model.HasPreviousPage)
-        {
-        <a href="javascript:;" onclick="Pesquisar(@Model.PageNumber - 1)">
-            <<
-        </a>
-        }
-        @for(int i= 1; i < Model.PageCount ; i++)
-        {
-            <a href="javascript:;" onclick="Pesquisar(@i)" 
-               @Html.Raw(Model.PageNumber == i ? "style=\"color:red\""  : "" )>
-            @i</a>
-         
-        }
-        
-        @if (Model.HasNextPage)
-        {
-        <a href="javascript:;" onclick="Pesquisar(@Model.PageNumber + 1)">
-            >>
-        </a>
-        }
+@PaginadorAjax.Create(Model, "Pesquisar", null)
 
-    </div>
-}

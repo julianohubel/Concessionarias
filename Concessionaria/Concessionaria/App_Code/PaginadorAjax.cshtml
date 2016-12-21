@@ -1,0 +1,50 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@helper Create(IPagedList<object> Model, string MetodoJS, List<string> ParamentrosJS)
+{
+
+if (ParamentrosJS == null)
+{
+    ParamentrosJS = new List<string>();
+}
+
+string strParmsJS = ParamentrosJS.Count() > 0 ? string.Join(",", ParamentrosJS) + "," : "";
+string strMetodoJS = string.Format("{0}({1}{2})", MetodoJS, strParmsJS, "{0}");
+
+
+
+if (Model.HasNextPage || Model.HasPreviousPage)
+{
+        <div class="pager">
+            <div class="pagination-container">
+                <ul class="pagination">
+                    @if (Model.HasPreviousPage)
+                    {
+                        <li class="PagedList-skipToPrevious"><a rel="prev" href="javascript:;" onclick="@string.Format(strMetodoJS , ( @Model.PageNumber - 1))">«</a></li>
+                    }
+                    @for (int i = 1; i <= Model.PageCount; i++)
+                    {
+                        string selecionado = Model.PageNumber == i ? "class=active" : "";
+                        <li  @selecionado>
+                            <a href="javascript:;" onclick="@string.Format(strMetodoJS , i)">
+                                @i
+                            </a>
+                        </li>
+                    }
+
+                    @if (Model.HasNextPage)
+                    {
+                        <li class="PagedList-skipToNext">
+                            <a href="javascript:;" onclick="@string.Format(strMetodoJS , ( @Model.PageNumber + 1))">
+                                »
+                            </a>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+}
+
+}

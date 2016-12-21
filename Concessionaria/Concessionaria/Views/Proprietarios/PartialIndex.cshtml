@@ -1,0 +1,49 @@
+﻿
+
+@model IPagedList<Proprietario>
+    <div id="divProprietarios">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().CPF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().DataNascimento)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CPF)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataNascimento)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProprietarioID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ProprietarioID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProprietarioID })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+        @PaginadorAjax.Create(Model, "PreencheProprietarios", null)   
+</div>
+

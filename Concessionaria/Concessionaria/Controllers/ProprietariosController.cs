@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using Concessionaria.Models;
 using Concessionaria.ViewsModel;
+using PagedList;
+using PagedList.Mvc;
 
 namespace Concessionaria.Controllers
 {
@@ -16,9 +18,37 @@ namespace Concessionaria.Controllers
         private ConcessionariaContext db = new ConcessionariaContext();
 
         // GET: Proprietarios
-        public ActionResult Index()
+        public ActionResult Index(string Pesquisa, int? page)
         {
-            return View(db.Proprietarios.ToList());
+            var proprietarios = db.Proprietarios
+                .Where(p => p.Nome.Contains(string.IsNullOrEmpty(Pesquisa) ? p.Nome : Pesquisa))
+                .OrderBy(p => p.Nome)
+                .ToPagedList(page ?? 1, 10);
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("PartialIndex", proprietarios);
+            }
+            return View(proprietarios);
+        }
+
+        public PartialViewResult PartialIndex(string Pesquisa, int? page)
+        {
+            var proprietarios = db.Proprietarios
+            .Where(p => p.Nome.Contains(string.IsNullOrEmpty(Pesquisa) ? p.Nome : Pesquisa))
+            .OrderBy(p => p.Nome)
+            .ToPagedList(page ?? 1, 10);
+            return PartialView("PartialIndex", proprietarios);
+        }
+        public ActionResult AutoComplete(string term)
+        {
+            var model = db.Proprietarios.Where(p => p.Nome.StartsWith(term)).Select(r =>
+               new
+               {
+                   label = r.Nome
+               }).Take(10);
+
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Proprietarios/Details/5
@@ -54,11 +84,11 @@ namespace Concessionaria.Controllers
         {
 
 
-           proprietario.Carros  = new List<Carro>();
+            proprietario.Carros = new List<Carro>();
             foreach (var item in carrosSelecionados)
             {
                 proprietario.Carros.Add(db.Carro.Find(int.Parse(item)));
-            }            
+            }
             if (ModelState.IsValid)
             {
                 db.Proprietarios.Add(proprietario);
@@ -109,7 +139,7 @@ namespace Concessionaria.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int? id,  Proprietario proprietario, string[] carrosSelecionados)
+        public ActionResult Edit(int? id, Proprietario proprietario, string[] carrosSelecionados)
         {
             if (ModelState.IsValid)
             {
@@ -125,7 +155,7 @@ namespace Concessionaria.Controllers
 
         protected void UpdateCarros(Proprietario proprietario, string[] carrosSelecionados)
         {
-            if(carrosSelecionados ==null)
+            if (carrosSelecionados == null)
             {
                 proprietario.Carros = new List<Carro>();
                 return;
@@ -136,9 +166,9 @@ namespace Concessionaria.Controllers
             var proprietarioCarros = new HashSet<int>(proprietario.Carros.Select(c => c.CarroID));
             var selecionados = new HashSet<string>(carrosSelecionados);
 
-            foreach(var item in allCarros)
+            foreach (var item in allCarros)
             {
-                if(selecionados.Contains(item.CarroID.ToString()))
+                if (selecionados.Contains(item.CarroID.ToString()))
                 {
                     if (!proprietarioCarros.Contains(item.CarroID))
                         proprietario.Carros.Add(item);
@@ -174,7 +204,7 @@ namespace Concessionaria.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            
+
 
             Proprietario proprietario = db.Proprietarios.Find(id);
             db.Proprietarios.Remove(proprietario);

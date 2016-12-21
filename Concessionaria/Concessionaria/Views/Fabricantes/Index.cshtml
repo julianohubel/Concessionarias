@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Concessionaria.Models.Fabricante>
+﻿@model IPagedList<Fabricante>
 
 @{
     ViewBag.Title = "Index";
@@ -6,34 +6,33 @@
 
 <h2>Index</h2>
 
+<script>
+    function PreencheFabricantes(page)
+    {
+        if (page == null)
+            page = 1;
+        $.ajax({
+            type: 'GET',
+            url : '@Url.Content("~/Fabricantes/PartialIndex/")',
+            data :  {page : page},
+            dataType : 'html',
+            cache: false,
+            async : true,
+            success : function(data)
+            {
+                $("#divPartial").html(data);
+            }
+        })
+    }
+</script>
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PaisOrigem)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaisOrigem)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FabricanteID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FabricanteID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FabricanteID })
-        </td>
-    </tr>
+@using (Html.BeginForm())
+{
+    @:<div id="divPartial">
+       Html.RenderPartial("PartialIndex");
+    @:</div>
 }
-
-</table>

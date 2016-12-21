@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Concessionaria.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace Concessionaria.Controllers
 {
@@ -17,7 +19,14 @@ namespace Concessionaria.Controllers
         // GET: Fabricantes
         public ActionResult Index()
         {
-            return View(db.Fabricante.ToList());
+            return View(db.Fabricante.OrderBy(f=> f.Nome).ToPagedList(1,10));
+        }
+
+        public  PartialViewResult PartialIndex(int? page)
+        {
+            IPagedList<Fabricante> fabricante = db.Fabricante.OrderBy(f => f.Nome).ToPagedList(page ?? 1, 10);
+
+            return PartialView(fabricante);
         }
 
         // GET: Fabricantes/Details/5

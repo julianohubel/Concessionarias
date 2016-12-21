@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Concessionaria.Models.Proprietario>
+﻿@model PagedList<Proprietario>
 
 @{
     ViewBag.Title = "Index";
@@ -6,46 +6,54 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CPF)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataNascimento)
-        </th>
-        <th></th>
-    </tr>
+<script type="text/javascript">
+    function PreencheProprietarios(page) {
+        if (page == null)
+            page = 1;
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/Proprietarios/Index/")',
+            data: { page: page, Pesquisa: $("#txtPesquisa").val() },
+            dataType: 'html',
+            cache: false,
+            async: true,
+            success: function (data) {
+                $("#divProprietarios").html(data);
+            }
+        });
+    }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CPF)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataNascimento)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProprietarioID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProprietarioID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProprietarioID })
-        </td>
-    </tr>
-}
+        var CreateAutoComplete = function () {
+            $input = $(this);
+            var options = { source: '@Url.Action("AutoComplete")' };
 
-</table>
+            $input.autocomplete(options);
+        };
+
+    $("#txtPesquisa");
+  
+</script>
+
+
+<input type="search" name="Pesquisa" id="txtPesquisa"/>
+<input type="button" value="Pesquisar" onclick="PreencheProprietarios()" />
+
+@*@using (Ajax.BeginForm(new AjaxOptions
+{
+    HttpMethod = "get",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "divProprietarios"
+}))
+{
+    <input type="search" name="Pesquisa" />
+    <input type="submit" value="Pesquisar" />
+}*@
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    @{Html.RenderPartial("PartialIndex", Model);}
+
+
+

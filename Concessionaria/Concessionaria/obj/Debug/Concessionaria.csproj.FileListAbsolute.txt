@@ -61,3 +61,10 @@ c:\projetos\estudos\concessionarias\Concessionaria\Concessionaria\bin\PagedList.
 c:\projetos\estudos\concessionarias\Concessionaria\Concessionaria\bin\PagedList.Mvc.dll
 c:\projetos\estudos\concessionarias\Concessionaria\Concessionaria\bin\PagedList.xml
 c:\projetos\estudos\concessionarias\Concessionaria\Concessionaria\bin\PagedList.Mvc.xml
+c:\projetos\estudos\concessionarias\Concessionaria\Concessionaria\bin\Antlr3.Runtime.dll
+c:\projetos\estudos\concessionarias\Concessionaria\Concessionaria\bin\Newtonsoft.Json.dll
+c:\projetos\estudos\concessionarias\Concessionaria\Concessionaria\bin\System.Web.Optimization.dll
+c:\projetos\estudos\concessionarias\Concessionaria\Concessionaria\bin\WebGrease.dll
+c:\projetos\estudos\concessionarias\Concessionaria\Concessionaria\bin\Antlr3.Runtime.pdb
+c:\projetos\estudos\concessionarias\Concessionaria\Concessionaria\bin\Newtonsoft.Json.xml
+c:\projetos\estudos\concessionarias\Concessionaria\Concessionaria\bin\System.Web.Optimization.xml
