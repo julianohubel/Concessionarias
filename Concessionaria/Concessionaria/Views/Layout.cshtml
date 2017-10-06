@@ -49,12 +49,12 @@
         </div>
     </div>
     <div class="container">
-        @RenderBody();
+        @RenderBody()
     </div>
     @Scripts.Render("~/bundles/jquery")    
     @Scripts.Render("~/bundles/bootstrap")
     
-    @RenderSection("script", required: false);
+    @RenderSection("script", required: false)
     <script type="text/javascript">
         $(document).ready(function () {
             var controller = "@controller";

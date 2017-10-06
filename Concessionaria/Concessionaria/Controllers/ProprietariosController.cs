@@ -85,9 +85,13 @@ namespace Concessionaria.Controllers
 
 
             proprietario.Carros = new List<Carro>();
-            foreach (var item in carrosSelecionados)
+
+            if (carrosSelecionados != null)
             {
-                proprietario.Carros.Add(db.Carro.Find(int.Parse(item)));
+                foreach (var item in carrosSelecionados)
+                {
+                    proprietario.Carros.Add(db.Carro.Find(int.Parse(item)));
+                }
             }
             if (ModelState.IsValid)
             {
