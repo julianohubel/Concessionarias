@@ -13,11 +13,11 @@ namespace Concessionaria
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            // routes.MapRoute(
-            //    name: "CarroDetalhes",
-            //    url: "Carroes/{nome}",               
-            //    defaults: new { controller = "Carroes", action = "DetailsName" }
-            //);
+           // routes.MapRoute(
+           //    name: "CarroDetalhes",
+           //    url: "Carros/Detalhes/{nome}",
+           //    defaults: new { controller = "Carroes", action = "DetailsName" }
+           //);
 
 
             // routes.MapRoute(
@@ -25,6 +25,8 @@ namespace Concessionaria
             //    url: "Fabricantes/{nome}",
             //    defaults: new { controller = "Fabricantes", action = "DetailsName" }
             //);
+
+            routes.MapMvcAttributeRoutes();
 
             routes.MapRoute(
                 name: "Default",

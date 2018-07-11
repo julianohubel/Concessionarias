@@ -11,8 +11,10 @@ using PagedList;
 
 namespace Concessionaria.Controllers
 {
+    
     public class CarroesController : Controller
     {
+        
         private ConcessionariaContext db = new ConcessionariaContext();
         
         // GET: Carroes 
@@ -62,7 +64,7 @@ namespace Concessionaria.Controllers
             }
             return View(carro);
         }
-        
+        [Route("Carro/{nome}")]
         public ActionResult DetailsName(string nome)
         {
             if (string.IsNullOrEmpty( nome ))
