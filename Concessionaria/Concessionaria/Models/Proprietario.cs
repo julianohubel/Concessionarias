@@ -21,7 +21,9 @@ namespace Concessionaria.Models
         public string Email { get; set; }
 
         public string CPF { get; set; }
+
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode =true)]
+        [Display(Name = "Data de Nascimento")]
         public DateTime DataNascimento { get; set; }
 
         public virtual ICollection<Carro> Carros { get; set; }
