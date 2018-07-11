@@ -227,6 +227,7 @@
     <Compile Include="Models\Carro.cs" />
     <Compile Include="Models\ConcessionariaContext.cs" />
     <Compile Include="Models\Fabricante.cs" />
+    <Compile Include="Models\IncializarBanco.cs" />
     <Compile Include="Models\Proprietario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewsModel\CarrosProprietarios.cs" />
